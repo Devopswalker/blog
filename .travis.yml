@@ -3,8 +3,7 @@ language: node_js
 # 指定需要sudo权限
 sudo: required
 # 指定node_js版本
-node_js: 
-  - 8.11.0
+node_js: stable
 
 # 构建通知[变动或失败邮件通知]
 notifications:
@@ -25,6 +24,8 @@ cache:
 #    - blog 
 
 before_install:
+  - git config --global user.name "Aaron"
+  - git config --global user.email "devops.aaron@gmail.com"
   - npm install -g hexo-cli
 
 # ==================Build Start============= 
@@ -39,25 +40,23 @@ script:
 
 # 设置 git commit 用户信息及邮箱；替换真实token到_config.yml文件，最后depoy部署
 after_script:
-  #- git cd ./public
-  #- git init
-  - git config user.name "Aaron"
-  - git config user.email "devops.aaron@gmail.com"
-  #- git add .
-  #- git commit - m "Update blog is automatically built by TravisCI[$TRAVIS_BUILD_NUMBER]"
+  - cd ./public
+  - git init
+  - git add .
+  - git commit - m "Update blog is automatically built by TravisCI[$TRAVIS_BUILD_NUMBER]"
   # Github Pages
-  #- git push --force --quiet "https://${GI_TOKEN}@${GI_REF}" master:master 
+  - git push --force --quiet "https://${GI_TOKEN}@${GI_REF}" master:master 
   # Coding Pages
-  #- git push --force --quiet "https://sogclub:${CO_TOKEN}@${CO_REF}" master:master
-  #- git tag v0.0.$TRAVIS_BUILD_NUMBER -a -m "Auto Taged By TravisCI With Build $TRAVIS_BUILD_NUMBER"
+  - git push --force --quiet "https://sogclub:${CO_TOKEN}@${CO_REF}" master:master
+  - git tag v0.0.$TRAVIS_BUILD_NUMBER -a -m "Auto Taged By TravisCI With Build $TRAVIS_BUILD_NUMBER"
   # Github Pages
-  #- git push --quiet "https://${GI_TOKEN}@${GI_REF}" master:master --tags
+  - git push --quiet "https://${GI_TOKEN}@${GI_REF}" master:master --tags
 
 
   # [停用]替换同目录下的_config.yml文件中gi_token字符串为配置的变量，注意此处sed命令用双引号。
-  - sed -i "s/gi_token/${GI_TOKEN}/g" ./_config.yml
+  #- sed -i "s/gi_token/${GI_TOKEN}/g" ./_config.yml
   #- sed -i "s/co_token/${CO_TOKEN}/g" ./_config.yml
-  - hexo deploy
+  #- hexo deploy
 # ==================Build End===============
 
 env:
@@ -65,4 +64,4 @@ env:
    # Github Pages
    - GI_REF: github.com/Devopswalker/devopswalker.github.io.git
    # Coding Pages
-   #- CO_REF: git.coding.net/sogclub/sogclub.coding.me.git
+   - CO_REF: git.coding.net/sogclub/sogclub.coding.me.git
