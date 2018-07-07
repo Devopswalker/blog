@@ -56,7 +56,7 @@ after_script:
 
   # [停用]替换同目录下的_config.yml文件中gi_token字符串为配置的变量，注意此处sed命令用双引号。
   - sed -i "s/gi_token/${GI_TOKEN}/g" ./_config.yml
-  - sed -i "s/co_token/${CO_TOKEN}/g" ./_config.yml
+  #- sed -i "s/co_token/${CO_TOKEN}/g" ./_config.yml
   - hexo deploy
 # ==================Build End===============
 
@@ -65,4 +65,4 @@ env:
    # Github Pages
    - GI_REF: github.com/Devopswalker/devopswalker.github.io.git
    # Coding Pages
-   - CO_REF: git.coding.net/sogclub/sogclub.coding.me.git
+   #- CO_REF: git.coding.net/sogclub/sogclub.coding.me.git
