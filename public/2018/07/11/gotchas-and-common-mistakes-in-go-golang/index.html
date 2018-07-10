@@ -1,0 +1,947 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=6.3.0" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.3.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.3.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.3.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.3.0" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '6.3.0',
+    sidebar: {"position":"right","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="原文（EN）：50 Shades of Go: Traps, Gotchas, and Common Mistakes for New Golang Devs 原文（CN）：鸟窝大神博客 本文只涉及其中的初级相关内容，后续深入学习实践后再行归纳总结中级和高级内容。  1.开（左）大括号不能放在单独的一行在大多数其他使用大括号的语言中，你需要选择放置它们的位置。Go 的方式不同，你可以为此感谢下自动">
+<meta name="keywords" content="100days,golang,技巧,常见错误">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Golang 新开发者要注意的陷阱和常见错误【初级篇】">
+<meta property="og:url" content="http://yoursite.com/2018/07/11/gotchas-and-common-mistakes-in-go-golang/index.html">
+<meta property="og:site_name" content="四多&#39;s Blog">
+<meta property="og:description" content="原文（EN）：50 Shades of Go: Traps, Gotchas, and Common Mistakes for New Golang Devs 原文（CN）：鸟窝大神博客 本文只涉及其中的初级相关内容，后续深入学习实践后再行归纳总结中级和高级内容。  1.开（左）大括号不能放在单独的一行在大多数其他使用大括号的语言中，你需要选择放置它们的位置。Go 的方式不同，你可以为此感谢下自动">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://pbcq37bxu.bkt.clouddn.com/the-aerolite-hole.jpg">
+<meta property="og:updated_time" content="2018-07-10T16:56:34.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Golang 新开发者要注意的陷阱和常见错误【初级篇】">
+<meta name="twitter:description" content="原文（EN）：50 Shades of Go: Traps, Gotchas, and Common Mistakes for New Golang Devs 原文（CN）：鸟窝大神博客 本文只涉及其中的初级相关内容，后续深入学习实践后再行归纳总结中级和高级内容。  1.开（左）大括号不能放在单独的一行在大多数其他使用大括号的语言中，你需要选择放置它们的位置。Go 的方式不同，你可以为此感谢下自动">
+<meta name="twitter:image" content="http://pbcq37bxu.bkt.clouddn.com/the-aerolite-hole.jpg">
+
+
+
+  <link rel="alternate" href="/atom.xml" title="四多's Blog" type="application/atom+xml" />
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/07/11/gotchas-and-common-mistakes-in-go-golang/"/>
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>Golang 新开发者要注意的陷阱和常见错误【初级篇】 | 四多's Blog</title>
+  
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right page-post-detail">
+    <div class="headband"></div>
+
+    <a href="https://github.com/Devopswalker" target="_blank">
+      <img style="position: absolute; top: 0; right: 0; border: 0;" 
+        src="https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png" alt="Fork me on GitHub">
+    </a>
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">四多's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+    <a href="/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />首页</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+    <a href="/about/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-user"></i> <br />关于</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+    <a href="/tags/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />标签</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+    <a href="/categories/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-th"></i> <br />分类</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+    <a href="/archives/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />归档</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-sitemap">
+    <a href="/sitemap.xml" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br />站点地图</a>
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/07/11/gotchas-and-common-mistakes-in-go-golang/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="四多">
+      <meta itemprop="description" content="指尖上的未来">
+      <meta itemprop="image" content="http://pbcq37bxu.bkt.clouddn.com/iootc-logo-v1.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="四多's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Golang 新开发者要注意的陷阱和常见错误【初级篇】
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-07-11 00:36:34 / 修改时间：00:56:34" itemprop="dateCreated datePublished" datetime="2018-07-11T00:36:34+08:00">2018-07-11</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/他山之石/" itemprop="url" rel="index"><span itemprop="name">他山之石</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/07/11/gotchas-and-common-mistakes-in-go-golang/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2018/07/11/gotchas-and-common-mistakes-in-go-golang/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+        <div class="post-gallery" itemscope itemtype="http://schema.org/ImageGallery">
+          
+          
+            <div class="post-gallery-row">
+              <a class="post-gallery-img fancybox"
+                 href="http://pbcq37bxu.bkt.clouddn.com/the-aerolite-hole.jpg" rel="gallery_cjjfzeraq0000aj25alusht19"
+                 itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
+                <img src="http://pbcq37bxu.bkt.clouddn.com/the-aerolite-hole.jpg" itemprop="contentUrl"/>
+              </a>
+            
+          
+
+          
+          </div>
+        </div>
+      
+
+      
+        <p>原文（EN）：<a href="http://devs.cloudimmunity.com/gotchas-and-common-mistakes-in-go-golang/" target="_blank" rel="noopener">50 Shades of Go: Traps, Gotchas, and Common Mistakes for New Golang Devs</a></p>
+<p>原文（CN）：<a href="http://colobu.com/2015/09/07/gotchas-and-common-mistakes-in-go-golang/" target="_blank" rel="noopener">鸟窝大神博客</a></p>
+<p>本文只涉及其中的初级相关内容，后续深入学习实践后再行归纳总结中级和高级内容。</p>
+<hr>
+<h3 id="1-开（左）大括号不能放在单独的一行"><a href="#1-开（左）大括号不能放在单独的一行" class="headerlink" title="1.开（左）大括号不能放在单独的一行"></a>1.开（左）大括号不能放在单独的一行</h3><p>在大多数其他使用大括号的语言中，你需要选择放置它们的位置。Go 的方式不同，你可以为此感谢下自动分号的注入（没有预读）。是的，Go 中也是有分号的：-）</p>
+<p>错误示例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">package main</span><br><span class="line"></span><br><span class="line">import &quot;fmt&quot;</span><br><span class="line"></span><br><span class="line">func main()</span><br><span class="line">&#123;// error, can&apos;t have the opening brace on a separate line</span><br><span class="line">	fmt.Println(&quot;Hello world!&quot;)</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>编译错误：</p>
+<blockquote>
+<p>./basic.go:43:1: syntax error: unexpected semicolon or newline before {</p>
+</blockquote>
+<p>有效示例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">package main</span><br><span class="line"></span><br><span class="line">import &quot;fmt&quot;</span><br><span class="line"></span><br><span class="line">func main() &#123;</span><br><span class="line"></span><br><span class="line">	fmt.Println(&quot;Hello world!&quot;)</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="2-未使用的变量"><a href="#2-未使用的变量" class="headerlink" title="2.未使用的变量"></a>2.未使用的变量</h3><p>如果你有未使用的变量，代码将编译失败。当然也有例外。在函数内一定要使用声明的变量，但未使用的全局变量是没问题的。<br>如果你给未使用的变量分配了一个新的值，代码还是会编译失败。你需要在某个地方使用这个变量，才能让编译器愉快的编译。</p>
+<p>错误示例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">package main</span><br><span class="line"></span><br><span class="line">var gvar int //not an error</span><br><span class="line"></span><br><span class="line">func main() &#123;  </span><br><span class="line">    var one int   //error, unused variable</span><br><span class="line">    two := 2      //error, unused variable</span><br><span class="line">    var three int //error, even though it&apos;s assigned 3 on the next line</span><br><span class="line">    three = 3     </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>编译错误：</p>
+<blockquote>
+<p>/tmp/sandbox473116179/main.go:6: one declared and not used<br>/tmp/sandbox473116179/main.go:7: two declared and not used<br>/tmp/sandbox473116179/main.go:8: three declared and not used</p>
+</blockquote>
+<p>有效示例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">package main</span><br><span class="line"></span><br><span class="line">import &quot;fmt&quot;</span><br><span class="line"></span><br><span class="line">func main() &#123;  </span><br><span class="line">    var one int</span><br><span class="line">    _ = one</span><br><span class="line">    two := 2 </span><br><span class="line">    fmt.Println(two)</span><br><span class="line">    var three int </span><br><span class="line">    three = 3</span><br><span class="line">    one = three</span><br><span class="line">    var four int</span><br><span class="line">    four = four</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>另一个选择是注释掉或者移除未使用的变量 ：-）</p>
+<h3 id="3-未使用的Imports"><a href="#3-未使用的Imports" class="headerlink" title="3.未使用的Imports"></a>3.未使用的Imports</h3><p>如果你引入一个包，而没有使用其中的任何函数、接口、结构体或者变量的话，代码将会编译失败。<br>你可以使用 goimports 来增加引入或者移除未使用的引用：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">go get golang.org/x/tools/cmd/goimports</span><br></pre></td></tr></table></figure></p>
+<p>如果你真的需要引入的包，你可以添加一个下划线标记符，_，来作为这个包的名字，从而避免编译失败。下滑线标记符用于引入，但不使用。</p>
+<p>错误示例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">package main</span><br><span class="line"></span><br><span class="line">import (  </span><br><span class="line">    &quot;fmt&quot;</span><br><span class="line">    &quot;log&quot;</span><br><span class="line">    &quot;time&quot;</span><br><span class="line">)</span><br><span class="line">func main() &#123;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>编译错误：</p>
+<blockquote>
+<p>/tmp/sandbox627475386/main.go:4: imported and not used: “fmt”<br>/tmp/sandbox627475386/main.go:5: imported and not used: “log”<br>/tmp/sandbox627475386/main.go:6: imported and not used: “time”</p>
+</blockquote>
+<p>有效示例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">package main</span><br><span class="line"></span><br><span class="line">import (  </span><br><span class="line">    _ &quot;fmt&quot;</span><br><span class="line">    &quot;log&quot;</span><br><span class="line">    &quot;time&quot;</span><br><span class="line">)</span><br><span class="line">var _ = log.Println</span><br><span class="line">func main() &#123;  </span><br><span class="line">    _ = time.Now</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>另一个选择是移除或者注释掉未使用的imports ：-）</p>
+<h3 id="4-简式的变量声明仅可以在函数内部使用"><a href="#4-简式的变量声明仅可以在函数内部使用" class="headerlink" title="4.简式的变量声明仅可以在函数内部使用"></a>4.简式的变量声明仅可以在函数内部使用</h3><p>错误示例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">package main</span><br><span class="line"></span><br><span class="line">myvar := 1 //error</span><br><span class="line"></span><br><span class="line">func main() &#123;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>编译错误：</p>
+<blockquote>
+<p>/tmp/sandbox265716165/main.go:3: non-declaration statement outside function body</p>
+</blockquote>
+<p>有效示例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">package main</span><br><span class="line"></span><br><span class="line">var myvar = 1</span><br><span class="line"></span><br><span class="line">func main() &#123;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="5-使用简式声明重复声明变量"><a href="#5-使用简式声明重复声明变量" class="headerlink" title="5.使用简式声明重复声明变量"></a>5.使用简式声明重复声明变量</h3><p>你不能在一个单独的声明中重复声明一个变量，但在多变量声明中这是允许的，其中至少要有一个新的声明变量。<br>重复变量需要在相同的代码块内，否则你将得到一个隐藏变量。<br>错误示例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">package main</span><br><span class="line"></span><br><span class="line">func main() &#123;  </span><br><span class="line">    one := 0</span><br><span class="line">    one := 1 //error</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>编译错误：</p>
+<blockquote>
+<p>/tmp/sandbox706333626/main.go:5: no new variables on left side of :=</p>
+</blockquote>
+<p>有效示例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">package main</span><br><span class="line"></span><br><span class="line">func main() &#123;  </span><br><span class="line">    one := 0</span><br><span class="line">    one, two := 1,2</span><br><span class="line">    one,two = two,one</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>四多</li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://yoursite.com/2018/07/11/gotchas-and-common-mistakes-in-go-golang/" title="Golang 新开发者要注意的陷阱和常见错误【初级篇】">http://yoursite.com/2018/07/11/gotchas-and-common-mistakes-in-go-golang/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！</li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/100days/" rel="tag"># 100days</a>
+          
+            <a href="/tags/golang/" rel="tag"># golang</a>
+          
+            <a href="/tags/技巧/" rel="tag"># 技巧</a>
+          
+            <a href="/tags/常见错误/" rel="tag"># 常见错误</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/07/07/hello-world/" rel="next" title="Hello World">
+                <i class="fa fa-chevron-left"></i> Hello World
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="http://pbcq37bxu.bkt.clouddn.com/iootc-logo-v1.png"
+                alt="四多" />
+            
+              <p class="site-author-name" itemprop="name">四多</p>
+              <p class="site-description motion-element" itemprop="description">指尖上的未来</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">2</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                    <span class="site-state-item-count">1</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">4</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/Devopswalker" target="_blank" title="GitHub"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                  
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="mailto:devops.aaron@gmail.com" target="_blank" title="E-Mail"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  
+                </span>
+              
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-开（左）大括号不能放在单独的一行"><span class="nav-number">1.</span> <span class="nav-text">1.开（左）大括号不能放在单独的一行</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-未使用的变量"><span class="nav-number">2.</span> <span class="nav-text">2.未使用的变量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-未使用的Imports"><span class="nav-number">3.</span> <span class="nav-text">3.未使用的Imports</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-简式的变量声明仅可以在函数内部使用"><span class="nav-number">4.</span> <span class="nav-text">4.简式的变量声明仅可以在函数内部使用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-使用简式声明重复声明变量"><span class="nav-number">5.</span> <span class="nav-text">5.使用简式声明重复声明变量</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">四多</span>
+
+  
+
+  
+</div>
+
+
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动 v3.7.1</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://theme-next.org">NexT.Muse</a> v6.3.0</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.3.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.3.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.3.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.3.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.3.0"></script>
+
+
+
+  
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  
+  
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(function (item) {
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'm3qsekQcVBH2Ofu1Fl0uY0Ix-gzGzoHsz',
+        appKey: 'WdpAPaSwOUpekGCxNKru2PM1',
+        placeholder: 'Just go go',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
