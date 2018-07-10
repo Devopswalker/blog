@@ -78,7 +78,7 @@ theme: next
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
-  type: 
+#  type: 
 #  type: git
 #  repo: https://gi_token@github.com/Devopswalker/devopswalker.github.io.git
 #  branch: master
@@ -87,3 +87,7 @@ deploy:
 #  repo: https://sogclub:co_token@git.coding.net/sogclub/sogclub.coding.me.git
 #  branch: master
 #  message: CI/CD by travis-ci, send to master {{ now("YYYY-MM-DD HH:mm:ss") }}
+  type: git
+  repo: git@github.com:Devopswalker/devopswalker.github.io.git
+  branch: master
+  message: CI/CD by travis-ci, send to master {{ now("YYYY-MM-DD HH:mm:ss") }}
