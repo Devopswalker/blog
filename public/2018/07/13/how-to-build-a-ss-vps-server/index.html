@@ -159,20 +159,20 @@
 
 
 
-  <meta name="description" content="原文（EN）：50 Shades of Go: Traps, Gotchas, and Common Mistakes for New Golang Devs 原文（CN）：鸟窝大神博客 本文只涉及其中的初级相关内容，后续深入学习实践后再行归纳总结中级和高级内容。  1.开（左）大括号不能放在单独的一行在大多数其他使用大括号的语言中，你需要选择放置它们的位置。Go 的方式不同，你可以为此感谢下自动">
-<meta name="keywords" content="100days,golang,技巧,常见错误">
+  <meta name="description" content="云服务器选择 自用：https://www.vultr.com/ （自选 / 费用适中 / 适合建站 / 日本节点部分IP容易被墙）   备胎：https://cn.aliyun.com/  （自选 / 优惠活动 / 容易受国家政策干预）   对比：https://www.10besty.com/best-vps-hosting-services/  搭建步骤安装 Python 环境 本教程基于">
+<meta name="keywords" content="技巧,VPN,VPS,SS">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Golang 新开发者要注意的陷阱和常见错误【初级篇】">
-<meta property="og:url" content="http://vmee.top/2018/07/11/gotchas-and-common-mistakes-in-go-golang/index.html">
+<meta property="og:title" content="基于 VPS 搭建 Shadowsocks 服务端及客户端配置">
+<meta property="og:url" content="http://vmee.top/2018/07/13/how-to-build-a-ss-vps-server/index.html">
 <meta property="og:site_name" content="四多&#39;s Blog">
-<meta property="og:description" content="原文（EN）：50 Shades of Go: Traps, Gotchas, and Common Mistakes for New Golang Devs 原文（CN）：鸟窝大神博客 本文只涉及其中的初级相关内容，后续深入学习实践后再行归纳总结中级和高级内容。  1.开（左）大括号不能放在单独的一行在大多数其他使用大括号的语言中，你需要选择放置它们的位置。Go 的方式不同，你可以为此感谢下自动">
+<meta property="og:description" content="云服务器选择 自用：https://www.vultr.com/ （自选 / 费用适中 / 适合建站 / 日本节点部分IP容易被墙）   备胎：https://cn.aliyun.com/  （自选 / 优惠活动 / 容易受国家政策干预）   对比：https://www.10besty.com/best-vps-hosting-services/  搭建步骤安装 Python 环境 本教程基于">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://pbcq37bxu.bkt.clouddn.com/the-aerolite-hole.jpg">
-<meta property="og:updated_time" content="2018-07-10T16:56:34.000Z">
+<meta property="og:image" content="http://pbcq37bxu.bkt.clouddn.com/shadowsocks-logo.png">
+<meta property="og:updated_time" content="2018-07-12T16:55:47.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Golang 新开发者要注意的陷阱和常见错误【初级篇】">
-<meta name="twitter:description" content="原文（EN）：50 Shades of Go: Traps, Gotchas, and Common Mistakes for New Golang Devs 原文（CN）：鸟窝大神博客 本文只涉及其中的初级相关内容，后续深入学习实践后再行归纳总结中级和高级内容。  1.开（左）大括号不能放在单独的一行在大多数其他使用大括号的语言中，你需要选择放置它们的位置。Go 的方式不同，你可以为此感谢下自动">
-<meta name="twitter:image" content="http://pbcq37bxu.bkt.clouddn.com/the-aerolite-hole.jpg">
+<meta name="twitter:title" content="基于 VPS 搭建 Shadowsocks 服务端及客户端配置">
+<meta name="twitter:description" content="云服务器选择 自用：https://www.vultr.com/ （自选 / 费用适中 / 适合建站 / 日本节点部分IP容易被墙）   备胎：https://cn.aliyun.com/  （自选 / 优惠活动 / 容易受国家政策干预）   对比：https://www.10besty.com/best-vps-hosting-services/  搭建步骤安装 Python 环境 本教程基于">
+<meta name="twitter:image" content="http://pbcq37bxu.bkt.clouddn.com/shadowsocks-logo.png">
 
 
 
@@ -181,7 +181,7 @@
 
 
 
-  <link rel="canonical" href="http://vmee.top/2018/07/11/gotchas-and-common-mistakes-in-go-golang/"/>
+  <link rel="canonical" href="http://vmee.top/2018/07/13/how-to-build-a-ss-vps-server/"/>
 
 
 
@@ -191,7 +191,7 @@
   };
 </script>
 
-  <title>Golang 新开发者要注意的陷阱和常见错误【初级篇】 | 四多's Blog</title>
+  <title>基于 VPS 搭建 Shadowsocks 服务端及客户端配置 | 四多's Blog</title>
   
 
 
@@ -371,7 +371,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://vmee.top/2018/07/11/gotchas-and-common-mistakes-in-go-golang/">
+    <link itemprop="mainEntityOfPage" href="http://vmee.top/2018/07/13/how-to-build-a-ss-vps-server/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="四多">
@@ -388,7 +388,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Golang 新开发者要注意的陷阱和常见错误【初级篇】
+          <h1 class="post-title" itemprop="name headline">基于 VPS 搭建 Shadowsocks 服务端及客户端配置
               
             
           </h1>
@@ -413,7 +413,7 @@
                 
               
 
-              <time title="创建时间：2018-07-11 00:36:34 / 修改时间：00:56:34" itemprop="dateCreated datePublished" datetime="2018-07-11T00:36:34+08:00">2018-07-11</time>
+              <time title="创建时间：2018-07-13 00:51:12 / 修改时间：00:55:47" itemprop="dateCreated datePublished" datetime="2018-07-13T00:51:12+08:00">2018-07-13</time>
             
 
             
@@ -435,7 +435,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/他山之石/" itemprop="url" rel="index"><span itemprop="name">他山之石</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/奇淫技巧/" itemprop="url" rel="index"><span itemprop="name">奇淫技巧</span></a></span>
 
                 
                 
@@ -450,8 +450,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2018/07/11/gotchas-and-common-mistakes-in-go-golang/#comments" itemprop="discussionUrl">
-                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2018/07/11/gotchas-and-common-mistakes-in-go-golang/" itemprop="commentCount"></span>
+                <a href="/2018/07/13/how-to-build-a-ss-vps-server/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2018/07/13/how-to-build-a-ss-vps-server/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -490,9 +490,9 @@
           
             <div class="post-gallery-row">
               <a class="post-gallery-img fancybox"
-                 href="http://pbcq37bxu.bkt.clouddn.com/the-aerolite-hole.jpg" rel="gallery_cjjitt87h0002lp25v1z2v3wf"
+                 href="http://pbcq37bxu.bkt.clouddn.com/shadowsocks-logo.png" rel="gallery_cjjitt87n0007lp25hz6wbn20"
                  itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
-                <img src="http://pbcq37bxu.bkt.clouddn.com/the-aerolite-hole.jpg" itemprop="contentUrl"/>
+                <img src="http://pbcq37bxu.bkt.clouddn.com/shadowsocks-logo.png" itemprop="contentUrl"/>
               </a>
             
           
@@ -503,46 +503,53 @@
       
 
       
-        <p>原文（EN）：<a href="http://devs.cloudimmunity.com/gotchas-and-common-mistakes-in-go-golang/" target="_blank" rel="noopener">50 Shades of Go: Traps, Gotchas, and Common Mistakes for New Golang Devs</a></p>
-<p>原文（CN）：<a href="http://colobu.com/2015/09/07/gotchas-and-common-mistakes-in-go-golang/" target="_blank" rel="noopener">鸟窝大神博客</a></p>
-<p>本文只涉及其中的初级相关内容，后续深入学习实践后再行归纳总结中级和高级内容。</p>
-<hr>
-<h3 id="1-开（左）大括号不能放在单独的一行"><a href="#1-开（左）大括号不能放在单独的一行" class="headerlink" title="1.开（左）大括号不能放在单独的一行"></a>1.开（左）大括号不能放在单独的一行</h3><p>在大多数其他使用大括号的语言中，你需要选择放置它们的位置。Go 的方式不同，你可以为此感谢下自动分号的注入（没有预读）。是的，Go 中也是有分号的：-）</p>
-<p>错误示例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">package main</span><br><span class="line"></span><br><span class="line">import &quot;fmt&quot;</span><br><span class="line"></span><br><span class="line">func main()</span><br><span class="line">&#123;// error, can&apos;t have the opening brace on a separate line</span><br><span class="line">	fmt.Println(&quot;Hello world!&quot;)</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>编译错误：</p>
-<blockquote>
-<p>./basic.go:43:1: syntax error: unexpected semicolon or newline before {</p>
+        <h3 id="云服务器选择"><a href="#云服务器选择" class="headerlink" title="云服务器选择"></a>云服务器选择</h3><blockquote>
+<p>自用：<a href="https://www.vultr.com/" target="_blank" rel="noopener">https://www.vultr.com/</a> （自选 / 费用适中 / 适合建站 / 日本节点部分IP容易被墙）</p>
 </blockquote>
-<p>有效示例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">package main</span><br><span class="line"></span><br><span class="line">import &quot;fmt&quot;</span><br><span class="line"></span><br><span class="line">func main() &#123;</span><br><span class="line"></span><br><span class="line">	fmt.Println(&quot;Hello world!&quot;)</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<h3 id="2-未使用的变量"><a href="#2-未使用的变量" class="headerlink" title="2.未使用的变量"></a>2.未使用的变量</h3><p>如果你有未使用的变量，代码将编译失败。当然也有例外。在函数内一定要使用声明的变量，但未使用的全局变量是没问题的。<br>如果你给未使用的变量分配了一个新的值，代码还是会编译失败。你需要在某个地方使用这个变量，才能让编译器愉快的编译。</p>
-<p>错误示例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">package main</span><br><span class="line"></span><br><span class="line">var gvar int //not an error</span><br><span class="line"></span><br><span class="line">func main() &#123;  </span><br><span class="line">    var one int   //error, unused variable</span><br><span class="line">    two := 2      //error, unused variable</span><br><span class="line">    var three int //error, even though it&apos;s assigned 3 on the next line</span><br><span class="line">    three = 3     </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>编译错误：</p>
 <blockquote>
-<p>/tmp/sandbox473116179/main.go:6: one declared and not used<br>/tmp/sandbox473116179/main.go:7: two declared and not used<br>/tmp/sandbox473116179/main.go:8: three declared and not used</p>
+<p>备胎：<a href="https://cn.aliyun.com/" target="_blank" rel="noopener">https://cn.aliyun.com/</a>  （自选 / 优惠活动 / 容易受国家政策干预）</p>
 </blockquote>
-<p>有效示例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">package main</span><br><span class="line"></span><br><span class="line">import &quot;fmt&quot;</span><br><span class="line"></span><br><span class="line">func main() &#123;  </span><br><span class="line">    var one int</span><br><span class="line">    _ = one</span><br><span class="line">    two := 2 </span><br><span class="line">    fmt.Println(two)</span><br><span class="line">    var three int </span><br><span class="line">    three = 3</span><br><span class="line">    one = three</span><br><span class="line">    var four int</span><br><span class="line">    four = four</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>另一个选择是注释掉或者移除未使用的变量 ：-）</p>
-<h3 id="3-未使用的Imports"><a href="#3-未使用的Imports" class="headerlink" title="3.未使用的Imports"></a>3.未使用的Imports</h3><p>如果你引入一个包，而没有使用其中的任何函数、接口、结构体或者变量的话，代码将会编译失败。<br>你可以使用 goimports 来增加引入或者移除未使用的引用：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">go get golang.org/x/tools/cmd/goimports</span><br></pre></td></tr></table></figure></p>
-<p>如果你真的需要引入的包，你可以添加一个下划线标记符，_，来作为这个包的名字，从而避免编译失败。下滑线标记符用于引入，但不使用。</p>
-<p>错误示例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">package main</span><br><span class="line"></span><br><span class="line">import (  </span><br><span class="line">    &quot;fmt&quot;</span><br><span class="line">    &quot;log&quot;</span><br><span class="line">    &quot;time&quot;</span><br><span class="line">)</span><br><span class="line">func main() &#123;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>编译错误：</p>
 <blockquote>
-<p>/tmp/sandbox627475386/main.go:4: imported and not used: “fmt”<br>/tmp/sandbox627475386/main.go:5: imported and not used: “log”<br>/tmp/sandbox627475386/main.go:6: imported and not used: “time”</p>
+<p>对比：<a href="https://www.10besty.com/best-vps-hosting-services/" target="_blank" rel="noopener">https://www.10besty.com/best-vps-hosting-services/</a></p>
 </blockquote>
-<p>有效示例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">package main</span><br><span class="line"></span><br><span class="line">import (  </span><br><span class="line">    _ &quot;fmt&quot;</span><br><span class="line">    &quot;log&quot;</span><br><span class="line">    &quot;time&quot;</span><br><span class="line">)</span><br><span class="line">var _ = log.Println</span><br><span class="line">func main() &#123;  </span><br><span class="line">    _ = time.Now</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>另一个选择是移除或者注释掉未使用的imports ：-）</p>
-<h3 id="4-简式的变量声明仅可以在函数内部使用"><a href="#4-简式的变量声明仅可以在函数内部使用" class="headerlink" title="4.简式的变量声明仅可以在函数内部使用"></a>4.简式的变量声明仅可以在函数内部使用</h3><p>错误示例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">package main</span><br><span class="line"></span><br><span class="line">myvar := 1 //error</span><br><span class="line"></span><br><span class="line">func main() &#123;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>编译错误：</p>
+<h3 id="搭建步骤"><a href="#搭建步骤" class="headerlink" title="搭建步骤"></a>搭建步骤</h3><h4 id="安装-Python-环境"><a href="#安装-Python-环境" class="headerlink" title="安装 Python 环境"></a>安装 Python 环境</h4><blockquote>
+<p>本教程基于 Linux CentOS 7</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"># install in linux centos 7</span><br><span class="line">$ yum install m2crypto python-setuptools</span><br><span class="line"></span><br><span class="line"># pip</span><br><span class="line">$ easy_install pip</span><br><span class="line"></span><br><span class="line"># install shadowsocks</span><br><span class="line">$ pip install shadowsocks</span><br></pre></td></tr></table></figure>
+<h4 id="添加-SS-配置"><a href="#添加-SS-配置" class="headerlink" title="添加 SS 配置"></a>添加 SS 配置</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># add config file</span><br><span class="line">$ vi /etc/shadowsocks.json</span><br></pre></td></tr></table></figure>
 <blockquote>
-<p>/tmp/sandbox265716165/main.go:3: non-declaration statement outside function body</p>
+<p>内容如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    &quot;server&quot;:&quot;0.0.0.0&quot;,</span><br><span class="line">    &quot;server_port&quot;:8888,   // 自定义端口号</span><br><span class="line">    &quot;local_address&quot;: &quot;127.0.0.1&quot;,</span><br><span class="line">    &quot;local_port&quot;:1080,</span><br><span class="line">    &quot;password&quot;:&quot;yourspwd&quot;,// 自定义密码</span><br><span class="line">    &quot;timeout&quot;:300,</span><br><span class="line">    &quot;method&quot;:&quot;aes-256-cfb&quot;,// 选择加密方式</span><br><span class="line">    &quot;fast_open&quot;: false</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 </blockquote>
-<p>有效示例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">package main</span><br><span class="line"></span><br><span class="line">var myvar = 1</span><br><span class="line"></span><br><span class="line">func main() &#123;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<h3 id="5-使用简式声明重复声明变量"><a href="#5-使用简式声明重复声明变量" class="headerlink" title="5.使用简式声明重复声明变量"></a>5.使用简式声明重复声明变量</h3><p>你不能在一个单独的声明中重复声明一个变量，但在多变量声明中这是允许的，其中至少要有一个新的声明变量。<br>重复变量需要在相同的代码块内，否则你将得到一个隐藏变量。<br>错误示例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">package main</span><br><span class="line"></span><br><span class="line">func main() &#123;  </span><br><span class="line">    one := 0</span><br><span class="line">    one := 1 //error</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>编译错误：</p>
+<h4 id="开启防火墙"><a href="#开启防火墙" class="headerlink" title="开启防火墙"></a>开启防火墙</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># install</span><br><span class="line">$ yum install firewalld</span><br><span class="line"></span><br><span class="line"># start</span><br><span class="line">$ systemctl start firewalld</span><br></pre></td></tr></table></figure>
+<h4 id="防火墙监听端口"><a href="#防火墙监听端口" class="headerlink" title="防火墙监听端口"></a>防火墙监听端口</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># server_port</span><br><span class="line">$ firewall-cmd --permanent --zone=public --add-port=server_port/tcp</span><br><span class="line">$ firewall-cmd --reload</span><br></pre></td></tr></table></figure>
+<h4 id="启动服务"><a href="#启动服务" class="headerlink" title="启动服务"></a>启动服务</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># start server</span><br><span class="line">$ ssserver -c /etc/shadowsocks.json</span><br><span class="line"></span><br><span class="line"># set nohup</span><br><span class="line">$ nohup ssserver -c /etc/shadowsocks.json</span><br></pre></td></tr></table></figure>
+<h4 id="开机启动"><a href="#开机启动" class="headerlink" title="开机启动"></a>开机启动</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># add command to /etc/rc.local</span><br><span class="line">$ vi /etc/rc.local</span><br></pre></td></tr></table></figure>
 <blockquote>
-<p>/tmp/sandbox706333626/main.go:5: no new variables on left side of :=</p>
+<p>内容如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"># THIS FILE IS ADDED FOR COMPATIBILITY PURPOSES</span><br><span class="line">#</span><br><span class="line"># It is highly advisable to create own systemd services or udev rules</span><br><span class="line"># to run scripts during boot instead of using this file.</span><br><span class="line">#</span><br><span class="line"># In contrast to previous versions due to parallel execution during boot</span><br><span class="line"># this script will NOT be run after all other services.</span><br><span class="line">#</span><br><span class="line"># Please note that you must run &apos;chmod +x /etc/rc.d/rc.local&apos; to ensure</span><br><span class="line"># that this script will be executed during boot.</span><br><span class="line">touch /var/lock/subsys/local</span><br><span class="line">/usr/bin/ssserver -c /etc/shadowsocks.json -d start</span><br></pre></td></tr></table></figure></p>
 </blockquote>
-<p>有效示例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">package main</span><br><span class="line"></span><br><span class="line">func main() &#123;  </span><br><span class="line">    one := 0</span><br><span class="line">    one, two := 1,2</span><br><span class="line">    one,two = two,one</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="客户端使用"><a href="#客户端使用" class="headerlink" title="客户端使用"></a>客户端使用</h3><blockquote>
+<p>MacOS 软件下载地址：<a href="https://pan.baidu.com/s/17B8DmYY5SvUWnlMU8ZOLlQ" target="_blank" rel="noopener">ShadowsocksX-NG</a> 密码：gunx</p>
+</blockquote>
+<blockquote>
+<p>手机 App Store 搜索 Shadowing 有惊喜</p>
+</blockquote>
+<blockquote>
+<p><a href="https://help.fyvps.com/index.php/archives/51/" target="_blank" rel="noopener">SS客户端各个版本下载地址</a></p>
+</blockquote>
+<h4 id="安装和配置"><a href="#安装和配置" class="headerlink" title="安装和配置"></a>安装和配置</h4><ul>
+<li style="list-style: none"><input type="checkbox" checked> 安装：过程略过，绿色软件解压缩打开即用。</li>
+<li style="list-style: none"><input type="checkbox" checked> 配置：电脑设置如下图所示</li>
+</ul>
+<p><img src="http://pbcq37bxu.bkt.clouddn.com/ss-server-config.jpg" alt="image"></p>
+<ul>
+<li style="list-style: none"><input type="checkbox" checked> 使用：轻触打开 Shadowsocks 开始墙外看世界吧！</li>
+</ul>
+<h3 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h3><blockquote>
+<ol>
+<li>遵纪守法，非礼勿视；</li>
+<li>严禁商用，后果自负；</li>
+</ol>
+</blockquote>
 
       
     </div>
@@ -574,7 +581,7 @@
     <strong>本文作者： </strong>四多</li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="http://vmee.top/2018/07/11/gotchas-and-common-mistakes-in-go-golang/" title="Golang 新开发者要注意的陷阱和常见错误【初级篇】">http://vmee.top/2018/07/11/gotchas-and-common-mistakes-in-go-golang/</a>
+    <a href="http://vmee.top/2018/07/13/how-to-build-a-ss-vps-server/" title="基于 VPS 搭建 Shadowsocks 服务端及客户端配置">http://vmee.top/2018/07/13/how-to-build-a-ss-vps-server/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！</li>
@@ -587,13 +594,13 @@
       
         <div class="post-tags">
           
-            <a href="/tags/100days/" rel="tag"><i class="fa fa-tag"></i> 100days</a>
-          
-            <a href="/tags/golang/" rel="tag"><i class="fa fa-tag"></i> golang</a>
-          
             <a href="/tags/技巧/" rel="tag"><i class="fa fa-tag"></i> 技巧</a>
           
-            <a href="/tags/常见错误/" rel="tag"><i class="fa fa-tag"></i> 常见错误</a>
+            <a href="/tags/VPN/" rel="tag"><i class="fa fa-tag"></i> VPN</a>
+          
+            <a href="/tags/VPS/" rel="tag"><i class="fa fa-tag"></i> VPS</a>
+          
+            <a href="/tags/SS/" rel="tag"><i class="fa fa-tag"></i> SS</a>
           
         </div>
       
@@ -606,8 +613,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/07/10/creation-hello-world/" rel="next" title="创世博客之 Hello World">
-                <i class="fa fa-chevron-left"></i> 创世博客之 Hello World
+              <a href="/2018/07/11/gotchas-and-common-mistakes-in-go-golang/" rel="next" title="Golang 新开发者要注意的陷阱和常见错误【初级篇】">
+                <i class="fa fa-chevron-left"></i> Golang 新开发者要注意的陷阱和常见错误【初级篇】
               </a>
             
           </div>
@@ -616,8 +623,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/07/13/how-to-build-a-ss-vps-server/" rel="prev" title="基于 VPS 搭建 Shadowsocks 服务端及客户端配置">
-                基于 VPS 搭建 Shadowsocks 服务端及客户端配置 <i class="fa fa-chevron-right"></i>
+              <a href="/2018/07/13/consensus-and-pow-and-pos/" rel="prev" title="分布式一致性与共识算法及PoW、PoS、DPoS 综述">
+                分布式一致性与共识算法及PoW、PoS、DPoS 综述 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -838,7 +845,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-开（左）大括号不能放在单独的一行"><span class="nav-number">1.</span> <span class="nav-text">1.开（左）大括号不能放在单独的一行</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-未使用的变量"><span class="nav-number">2.</span> <span class="nav-text">2.未使用的变量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-未使用的Imports"><span class="nav-number">3.</span> <span class="nav-text">3.未使用的Imports</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-简式的变量声明仅可以在函数内部使用"><span class="nav-number">4.</span> <span class="nav-text">4.简式的变量声明仅可以在函数内部使用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-使用简式声明重复声明变量"><span class="nav-number">5.</span> <span class="nav-text">5.使用简式声明重复声明变量</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#云服务器选择"><span class="nav-number">1.</span> <span class="nav-text">云服务器选择</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#搭建步骤"><span class="nav-number">2.</span> <span class="nav-text">搭建步骤</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#安装-Python-环境"><span class="nav-number">2.1.</span> <span class="nav-text">安装 Python 环境</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#添加-SS-配置"><span class="nav-number">2.2.</span> <span class="nav-text">添加 SS 配置</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#开启防火墙"><span class="nav-number">2.3.</span> <span class="nav-text">开启防火墙</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#防火墙监听端口"><span class="nav-number">2.4.</span> <span class="nav-text">防火墙监听端口</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#启动服务"><span class="nav-number">2.5.</span> <span class="nav-text">启动服务</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#开机启动"><span class="nav-number">2.6.</span> <span class="nav-text">开机启动</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#客户端使用"><span class="nav-number">3.</span> <span class="nav-text">客户端使用</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#安装和配置"><span class="nav-number">3.1.</span> <span class="nav-text">安装和配置</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#注意事项"><span class="nav-number">4.</span> <span class="nav-text">注意事项</span></a></li></ol></div>
             
 
           </div>
