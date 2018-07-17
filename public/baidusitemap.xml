@@ -4,6 +4,32 @@
 
     
   <url>
+    <loc>http://vmee.top/2018/07/17/gotchas-and-common-mistakes-in-go-golang-part-two/</loc>
+    <lastmod>2018-07-16T16:21:34.000Z</lastmod>
+    <data>
+        <display>
+        <title>Golang 新开发者要注意的陷阱和常见错误【初级二】</title>
+        <pubTime>2018-07-17T15:02:28.000Z</pubTime>
+        
+        <tag>100days</tag>
+         
+        <tag>golang</tag>
+         
+        <tag>技巧</tag>
+         
+        <tag>常见错误</tag>
+         
+         
+           
+             
+              <breadCrumb title="他山之石" url="http://vmee.top/categories/%E4%BB%96%E5%B1%B1%E4%B9%8B%E7%9F%B3/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://vmee.top/2018/07/15/industry-dictionary-of-blockchain/</loc>
     <lastmod>2018-07-14T17:37:56.000Z</lastmod>
     <data>
@@ -65,13 +91,13 @@
         <title>基于 VPS 搭建 Shadowsocks 服务端及客户端配置</title>
         <pubTime>2018-07-12T16:51:12.000Z</pubTime>
         
+        <tag>技巧</tag>
+         
         <tag>VPN</tag>
          
         <tag>VPS</tag>
          
         <tag>SS</tag>
-         
-        <tag>技巧</tag>
          
          
            
@@ -85,6 +111,32 @@
     
     
     
+    
+  <url>
+    <loc>http://vmee.top/2018/07/11/gotchas-and-common-mistakes-in-go-golang/</loc>
+    <lastmod>2018-07-10T16:56:34.000Z</lastmod>
+    <data>
+        <display>
+        <title>Golang 新开发者要注意的陷阱和常见错误【初级一】</title>
+        <pubTime>2018-07-10T16:36:34.000Z</pubTime>
+        
+        <tag>100days</tag>
+         
+        <tag>golang</tag>
+         
+        <tag>技巧</tag>
+         
+        <tag>常见错误</tag>
+         
+         
+           
+             
+              <breadCrumb title="他山之石" url="http://vmee.top/categories/%E4%BB%96%E5%B1%B1%E4%B9%8B%E7%9F%B3/"/>
+          
+        </display>
+    </data>
+    </url>
+
     
   <url>
     <loc>http://vmee.top/2018/07/10/creation-hello-world/</loc>
@@ -104,32 +156,6 @@
            
              
               <breadCrumb title="奇淫技巧" url="http://vmee.top/categories/%E5%A5%87%E6%B7%AB%E6%8A%80%E5%B7%A7/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://vmee.top/2018/07/11/gotchas-and-common-mistakes-in-go-golang/</loc>
-    <lastmod>2018-07-10T16:56:34.000Z</lastmod>
-    <data>
-        <display>
-        <title>Golang 新开发者要注意的陷阱和常见错误【初级篇】</title>
-        <pubTime>2018-07-10T16:36:34.000Z</pubTime>
-        
-        <tag>100days</tag>
-         
-        <tag>技巧</tag>
-         
-        <tag>golang</tag>
-         
-        <tag>常见错误</tag>
-         
-         
-           
-             
-              <breadCrumb title="他山之石" url="http://vmee.top/categories/%E4%BB%96%E5%B1%B1%E4%B9%8B%E7%9F%B3/"/>
           
         </display>
     </data>

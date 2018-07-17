@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://vmee.top/2018/07/17/gotchas-and-common-mistakes-in-go-golang-part-two/</loc>
+    
+    <lastmod>2018-07-16T16:21:34.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://vmee.top/2018/07/15/industry-dictionary-of-blockchain/</loc>
     
     <lastmod>2018-07-14T17:37:56.000Z</lastmod>
@@ -44,14 +51,14 @@
   </url>
   
   <url>
-    <loc>http://vmee.top/2018/07/10/creation-hello-world/</loc>
+    <loc>http://vmee.top/2018/07/11/gotchas-and-common-mistakes-in-go-golang/</loc>
     
     <lastmod>2018-07-10T16:56:34.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://vmee.top/2018/07/11/gotchas-and-common-mistakes-in-go-golang/</loc>
+    <loc>http://vmee.top/2018/07/10/creation-hello-world/</loc>
     
     <lastmod>2018-07-10T16:56:34.000Z</lastmod>
     

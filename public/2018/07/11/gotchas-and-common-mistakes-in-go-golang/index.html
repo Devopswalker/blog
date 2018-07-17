@@ -159,19 +159,19 @@
 
 
 
-  <meta name="description" content="原文（EN）：50 Shades of Go: Traps, Gotchas, and Common Mistakes for New Golang Devs 原文（CN）：鸟窝大神博客 本文只涉及其中的初级相关内容，后续深入学习实践后再行归纳总结中级和高级内容。  1.开（左）大括号不能放在单独的一行在大多数其他使用大括号的语言中，你需要选择放置它们的位置。Go 的方式不同，你可以为此感谢下自动">
-<meta name="keywords" content="100days,技巧,golang,常见错误">
+  <meta name="description" content="原文（EN）：50 Shades of Go: Traps, Gotchas, and Common Mistakes for New Golang Devs 原文（CN）：鸟窝大神博客 本文只涉及其中的初级相关内容，后续深入学习实践后再行归纳总结中级和高级内容。  开（左）大括号不能放在单独的一行在大多数其他使用大括号的语言中，你需要选择放置它们的位置。Go 的方式不同，你可以为此感谢下自动分号">
+<meta name="keywords" content="100days,golang,技巧,常见错误">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Golang 新开发者要注意的陷阱和常见错误【初级篇】">
+<meta property="og:title" content="Golang 新开发者要注意的陷阱和常见错误【初级一】">
 <meta property="og:url" content="http://vmee.top/2018/07/11/gotchas-and-common-mistakes-in-go-golang/index.html">
 <meta property="og:site_name" content="四多&#39;s Blog">
-<meta property="og:description" content="原文（EN）：50 Shades of Go: Traps, Gotchas, and Common Mistakes for New Golang Devs 原文（CN）：鸟窝大神博客 本文只涉及其中的初级相关内容，后续深入学习实践后再行归纳总结中级和高级内容。  1.开（左）大括号不能放在单独的一行在大多数其他使用大括号的语言中，你需要选择放置它们的位置。Go 的方式不同，你可以为此感谢下自动">
+<meta property="og:description" content="原文（EN）：50 Shades of Go: Traps, Gotchas, and Common Mistakes for New Golang Devs 原文（CN）：鸟窝大神博客 本文只涉及其中的初级相关内容，后续深入学习实践后再行归纳总结中级和高级内容。  开（左）大括号不能放在单独的一行在大多数其他使用大括号的语言中，你需要选择放置它们的位置。Go 的方式不同，你可以为此感谢下自动分号">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://pbcq37bxu.bkt.clouddn.com/the-aerolite-hole.jpg">
 <meta property="og:updated_time" content="2018-07-10T16:56:34.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Golang 新开发者要注意的陷阱和常见错误【初级篇】">
-<meta name="twitter:description" content="原文（EN）：50 Shades of Go: Traps, Gotchas, and Common Mistakes for New Golang Devs 原文（CN）：鸟窝大神博客 本文只涉及其中的初级相关内容，后续深入学习实践后再行归纳总结中级和高级内容。  1.开（左）大括号不能放在单独的一行在大多数其他使用大括号的语言中，你需要选择放置它们的位置。Go 的方式不同，你可以为此感谢下自动">
+<meta name="twitter:title" content="Golang 新开发者要注意的陷阱和常见错误【初级一】">
+<meta name="twitter:description" content="原文（EN）：50 Shades of Go: Traps, Gotchas, and Common Mistakes for New Golang Devs 原文（CN）：鸟窝大神博客 本文只涉及其中的初级相关内容，后续深入学习实践后再行归纳总结中级和高级内容。  开（左）大括号不能放在单独的一行在大多数其他使用大括号的语言中，你需要选择放置它们的位置。Go 的方式不同，你可以为此感谢下自动分号">
 <meta name="twitter:image" content="http://pbcq37bxu.bkt.clouddn.com/the-aerolite-hole.jpg">
 
 
@@ -191,7 +191,7 @@
   };
 </script>
 
-  <title>Golang 新开发者要注意的陷阱和常见错误【初级篇】 | 四多's Blog</title>
+  <title>Golang 新开发者要注意的陷阱和常见错误【初级一】 | 四多's Blog</title>
   
 
 
@@ -388,7 +388,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Golang 新开发者要注意的陷阱和常见错误【初级篇】
+          <h1 class="post-title" itemprop="name headline">Golang 新开发者要注意的陷阱和常见错误【初级一】
               
             
           </h1>
@@ -490,7 +490,7 @@
           
             <div class="post-gallery-row">
               <a class="post-gallery-img fancybox"
-                 href="http://pbcq37bxu.bkt.clouddn.com/the-aerolite-hole.jpg" rel="gallery_cjjlp8q3y0006ae7z1b4vpuhl"
+                 href="http://pbcq37bxu.bkt.clouddn.com/the-aerolite-hole.jpg" rel="gallery_cjjpym6t20000q67z7fvknlqt"
                  itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
                 <img src="http://pbcq37bxu.bkt.clouddn.com/the-aerolite-hole.jpg" itemprop="contentUrl"/>
               </a>
@@ -507,14 +507,14 @@
 <p>原文（CN）：<a href="http://colobu.com/2015/09/07/gotchas-and-common-mistakes-in-go-golang/" target="_blank" rel="noopener">鸟窝大神博客</a></p>
 <p>本文只涉及其中的初级相关内容，后续深入学习实践后再行归纳总结中级和高级内容。</p>
 <hr>
-<h3 id="1-开（左）大括号不能放在单独的一行"><a href="#1-开（左）大括号不能放在单独的一行" class="headerlink" title="1.开（左）大括号不能放在单独的一行"></a>1.开（左）大括号不能放在单独的一行</h3><p>在大多数其他使用大括号的语言中，你需要选择放置它们的位置。Go 的方式不同，你可以为此感谢下自动分号的注入（没有预读）。是的，Go 中也是有分号的：-）</p>
+<h3 id="开（左）大括号不能放在单独的一行"><a href="#开（左）大括号不能放在单独的一行" class="headerlink" title="开（左）大括号不能放在单独的一行"></a>开（左）大括号不能放在单独的一行</h3><p>在大多数其他使用大括号的语言中，你需要选择放置它们的位置。Go 的方式不同，你可以为此感谢下自动分号的注入（没有预读）。是的，Go 中也是有分号的：-）</p>
 <p>错误示例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">package main</span><br><span class="line"></span><br><span class="line">import &quot;fmt&quot;</span><br><span class="line"></span><br><span class="line">func main()</span><br><span class="line">&#123;// error, can&apos;t have the opening brace on a separate line</span><br><span class="line">	fmt.Println(&quot;Hello world!&quot;)</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>编译错误：</p>
 <blockquote>
 <p>./basic.go:43:1: syntax error: unexpected semicolon or newline before {</p>
 </blockquote>
 <p>有效示例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">package main</span><br><span class="line"></span><br><span class="line">import &quot;fmt&quot;</span><br><span class="line"></span><br><span class="line">func main() &#123;</span><br><span class="line"></span><br><span class="line">	fmt.Println(&quot;Hello world!&quot;)</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<h3 id="2-未使用的变量"><a href="#2-未使用的变量" class="headerlink" title="2.未使用的变量"></a>2.未使用的变量</h3><p>如果你有未使用的变量，代码将编译失败。当然也有例外。在函数内一定要使用声明的变量，但未使用的全局变量是没问题的。<br>如果你给未使用的变量分配了一个新的值，代码还是会编译失败。你需要在某个地方使用这个变量，才能让编译器愉快的编译。</p>
+<h3 id="未使用的变量"><a href="#未使用的变量" class="headerlink" title="未使用的变量"></a>未使用的变量</h3><p>如果你有未使用的变量，代码将编译失败。当然也有例外。在函数内一定要使用声明的变量，但未使用的全局变量是没问题的。<br>如果你给未使用的变量分配了一个新的值，代码还是会编译失败。你需要在某个地方使用这个变量，才能让编译器愉快的编译。</p>
 <p>错误示例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">package main</span><br><span class="line"></span><br><span class="line">var gvar int //not an error</span><br><span class="line"></span><br><span class="line">func main() &#123;  </span><br><span class="line">    var one int   //error, unused variable</span><br><span class="line">    two := 2      //error, unused variable</span><br><span class="line">    var three int //error, even though it&apos;s assigned 3 on the next line</span><br><span class="line">    three = 3     </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>编译错误：</p>
 <blockquote>
@@ -522,7 +522,7 @@
 </blockquote>
 <p>有效示例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">package main</span><br><span class="line"></span><br><span class="line">import &quot;fmt&quot;</span><br><span class="line"></span><br><span class="line">func main() &#123;  </span><br><span class="line">    var one int</span><br><span class="line">    _ = one</span><br><span class="line">    two := 2 </span><br><span class="line">    fmt.Println(two)</span><br><span class="line">    var three int </span><br><span class="line">    three = 3</span><br><span class="line">    one = three</span><br><span class="line">    var four int</span><br><span class="line">    four = four</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>另一个选择是注释掉或者移除未使用的变量 ：-）</p>
-<h3 id="3-未使用的Imports"><a href="#3-未使用的Imports" class="headerlink" title="3.未使用的Imports"></a>3.未使用的Imports</h3><p>如果你引入一个包，而没有使用其中的任何函数、接口、结构体或者变量的话，代码将会编译失败。<br>你可以使用 goimports 来增加引入或者移除未使用的引用：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">go get golang.org/x/tools/cmd/goimports</span><br></pre></td></tr></table></figure></p>
+<h3 id="未使用的Imports"><a href="#未使用的Imports" class="headerlink" title="未使用的Imports"></a>未使用的Imports</h3><p>如果你引入一个包，而没有使用其中的任何函数、接口、结构体或者变量的话，代码将会编译失败。<br>你可以使用 goimports 来增加引入或者移除未使用的引用：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">go get golang.org/x/tools/cmd/goimports</span><br></pre></td></tr></table></figure></p>
 <p>如果你真的需要引入的包，你可以添加一个下划线标记符，_，来作为这个包的名字，从而避免编译失败。下滑线标记符用于引入，但不使用。</p>
 <p>错误示例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">package main</span><br><span class="line"></span><br><span class="line">import (  </span><br><span class="line">    &quot;fmt&quot;</span><br><span class="line">    &quot;log&quot;</span><br><span class="line">    &quot;time&quot;</span><br><span class="line">)</span><br><span class="line">func main() &#123;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>编译错误：</p>
@@ -531,13 +531,13 @@
 </blockquote>
 <p>有效示例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">package main</span><br><span class="line"></span><br><span class="line">import (  </span><br><span class="line">    _ &quot;fmt&quot;</span><br><span class="line">    &quot;log&quot;</span><br><span class="line">    &quot;time&quot;</span><br><span class="line">)</span><br><span class="line">var _ = log.Println</span><br><span class="line">func main() &#123;  </span><br><span class="line">    _ = time.Now</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>另一个选择是移除或者注释掉未使用的imports ：-）</p>
-<h3 id="4-简式的变量声明仅可以在函数内部使用"><a href="#4-简式的变量声明仅可以在函数内部使用" class="headerlink" title="4.简式的变量声明仅可以在函数内部使用"></a>4.简式的变量声明仅可以在函数内部使用</h3><p>错误示例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">package main</span><br><span class="line"></span><br><span class="line">myvar := 1 //error</span><br><span class="line"></span><br><span class="line">func main() &#123;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="简式的变量声明仅可以在函数内部使用"><a href="#简式的变量声明仅可以在函数内部使用" class="headerlink" title="简式的变量声明仅可以在函数内部使用"></a>简式的变量声明仅可以在函数内部使用</h3><p>错误示例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">package main</span><br><span class="line"></span><br><span class="line">myvar := 1 //error</span><br><span class="line"></span><br><span class="line">func main() &#123;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>编译错误：</p>
 <blockquote>
 <p>/tmp/sandbox265716165/main.go:3: non-declaration statement outside function body</p>
 </blockquote>
 <p>有效示例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">package main</span><br><span class="line"></span><br><span class="line">var myvar = 1</span><br><span class="line"></span><br><span class="line">func main() &#123;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<h3 id="5-使用简式声明重复声明变量"><a href="#5-使用简式声明重复声明变量" class="headerlink" title="5.使用简式声明重复声明变量"></a>5.使用简式声明重复声明变量</h3><p>你不能在一个单独的声明中重复声明一个变量，但在多变量声明中这是允许的，其中至少要有一个新的声明变量。<br>重复变量需要在相同的代码块内，否则你将得到一个隐藏变量。<br>错误示例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">package main</span><br><span class="line"></span><br><span class="line">func main() &#123;  </span><br><span class="line">    one := 0</span><br><span class="line">    one := 1 //error</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="使用简式声明重复声明变量"><a href="#使用简式声明重复声明变量" class="headerlink" title="使用简式声明重复声明变量"></a>使用简式声明重复声明变量</h3><p>你不能在一个单独的声明中重复声明一个变量，但在多变量声明中这是允许的，其中至少要有一个新的声明变量。<br>重复变量需要在相同的代码块内，否则你将得到一个隐藏变量。<br>错误示例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">package main</span><br><span class="line"></span><br><span class="line">func main() &#123;  </span><br><span class="line">    one := 0</span><br><span class="line">    one := 1 //error</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>编译错误：</p>
 <blockquote>
 <p>/tmp/sandbox706333626/main.go:5: no new variables on left side of :=</p>
@@ -574,7 +574,7 @@
     <strong>本文作者： </strong>四多</li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="http://vmee.top/2018/07/11/gotchas-and-common-mistakes-in-go-golang/" title="Golang 新开发者要注意的陷阱和常见错误【初级篇】">http://vmee.top/2018/07/11/gotchas-and-common-mistakes-in-go-golang/</a>
+    <a href="http://vmee.top/2018/07/11/gotchas-and-common-mistakes-in-go-golang/" title="Golang 新开发者要注意的陷阱和常见错误【初级一】">http://vmee.top/2018/07/11/gotchas-and-common-mistakes-in-go-golang/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！</li>
@@ -589,9 +589,9 @@
           
             <a href="/tags/100days/" rel="tag"><i class="fa fa-tag"></i> 100days</a>
           
-            <a href="/tags/技巧/" rel="tag"><i class="fa fa-tag"></i> 技巧</a>
-          
             <a href="/tags/golang/" rel="tag"><i class="fa fa-tag"></i> golang</a>
+          
+            <a href="/tags/技巧/" rel="tag"><i class="fa fa-tag"></i> 技巧</a>
           
             <a href="/tags/常见错误/" rel="tag"><i class="fa fa-tag"></i> 常见错误</a>
           
@@ -699,7 +699,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">5</span>
+                    <span class="site-state-item-count">6</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -842,7 +842,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-开（左）大括号不能放在单独的一行"><span class="nav-number">1.</span> <span class="nav-text">1.开（左）大括号不能放在单独的一行</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-未使用的变量"><span class="nav-number">2.</span> <span class="nav-text">2.未使用的变量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-未使用的Imports"><span class="nav-number">3.</span> <span class="nav-text">3.未使用的Imports</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-简式的变量声明仅可以在函数内部使用"><span class="nav-number">4.</span> <span class="nav-text">4.简式的变量声明仅可以在函数内部使用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-使用简式声明重复声明变量"><span class="nav-number">5.</span> <span class="nav-text">5.使用简式声明重复声明变量</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#开（左）大括号不能放在单独的一行"><span class="nav-number">1.</span> <span class="nav-text">开（左）大括号不能放在单独的一行</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#未使用的变量"><span class="nav-number">2.</span> <span class="nav-text">未使用的变量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#未使用的Imports"><span class="nav-number">3.</span> <span class="nav-text">未使用的Imports</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#简式的变量声明仅可以在函数内部使用"><span class="nav-number">4.</span> <span class="nav-text">简式的变量声明仅可以在函数内部使用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用简式声明重复声明变量"><span class="nav-number">5.</span> <span class="nav-text">使用简式声明重复声明变量</span></a></li></ol></div>
             
 
           </div>
